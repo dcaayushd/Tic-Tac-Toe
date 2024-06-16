@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tic_tac_toe/screens/lobby_screen/widgets/pricing_area.dart';
-import 'package:tic_tac_toe/screens/lobby_screen/widgets/room_info.dart';
-import 'package:tic_tac_toe/widgets/primary_button.dart';
-import 'package:tic_tac_toe/widgets/user_card.dart';
+import 'package:get/get.dart';
+import 'package:tic_tac_toe/screens/game_screen/game_screen.dart';
 // import 'package:get/get.dart';
 
 import '../../configs/assets_path.dart';
-// import '../../widgets/primary_button.dart';
+import '../../widgets/primary_button.dart';
+import '../../widgets/user_card.dart';
+
+import 'components/pricing_area.dart';
+import 'components/room_info.dart';
 
 class LobbyScreen extends StatelessWidget {
   const LobbyScreen({super.key});
@@ -50,7 +52,14 @@ class LobbyScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20),
-                PrimaryButton(buttonText: 'Start Game', onTap: () {})
+                PrimaryButton(
+                  buttonText: 'Start Game',
+                  onTap: () {
+                    Get.to(
+                      () => GameScreen(),
+                    );
+                  },
+                ),
               ],
             ),
           ),
