@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/screen_route.dart';
 import 'package:tic_tac_toe/configs/theme.dart';
 import 'package:tic_tac_toe/firebase_options.dart';
-import 'package:tic_tac_toe/screens/update_profile/update_profile_screen.dart';
+import 'package:tic_tac_toe/screens/splash/splash_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tic Tac Toe',
       theme: lightTheme,
-      home: UpdateProfileScreen(),
+      home: SplashScreen(),
     );
   }
 }

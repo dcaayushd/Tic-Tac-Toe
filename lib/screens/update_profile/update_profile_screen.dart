@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:tic_tac_toe/widgets/primary_button_with_icon.dart';
 
 import '../../configs/assets_path.dart';
+import '../../controllers/auth_controller.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
   const UpdateProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -81,7 +85,9 @@ class UpdateProfileScreen extends StatelessWidget {
               ),
               PrimaryButtonWithIcon(
                 buttonText: 'Save',
-                onTap: () {},
+                onTap: () {
+                  authController.updateProfile();
+                },
                 iconPath: IconsPath.save,
               )
             ],
