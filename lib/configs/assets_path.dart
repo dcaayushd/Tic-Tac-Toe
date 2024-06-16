@@ -25,7 +25,7 @@ class IconsPath {
 
 
 class ImagePath {
-  static const basePath = "assets/photos/";
+  static const basePath = "assets/images/";
   static const boy = "${basePath}boy.png";
   static const girl = "${basePath}girl.png";
   static const welcome1 = "${basePath}welcome1.png";

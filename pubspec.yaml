@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
+  concentric_transition: ^1.0.3
   dotted_border: ^2.1.0
   flutter:
     sdk: flutter

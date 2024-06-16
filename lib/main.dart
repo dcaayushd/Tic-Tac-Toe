@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/screen_route.dart';
 import 'package:tic_tac_toe/configs/theme.dart';
 import 'package:tic_tac_toe/screens/room_screen/room_screen.dart';
+import 'package:tic_tac_toe/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tic Tac Toe',
       theme: lightTheme,
-      home: RoomScreen(),
+      // home: RoomScreen(),
+      home: SplashScreen(),
     );
   }
 }
