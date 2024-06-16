@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/screen_route.dart';
 import 'package:tic_tac_toe/configs/theme.dart';
+import 'package:tic_tac_toe/screens/auth/auth_screen.dart';
 import 'package:tic_tac_toe/screens/room_screen/room_screen.dart';
 import 'package:tic_tac_toe/screens/splash/splash_screen.dart';
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       title: 'Tic Tac Toe',
       theme: lightTheme,
       // home: RoomScreen(),
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: AuthScreen(),
     );
   }
 }
