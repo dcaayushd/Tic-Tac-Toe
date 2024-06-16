@@ -49,11 +49,10 @@ class _InGameUserCardState extends State<InGameUserCard> {
                 ),
                 child: Column(
                   children: [
-                    // SizedBox(height: 6),
-                    // ! Issue Here
                     SvgPicture.asset(
                       widget.playIcon,
-                      width: 40,
+                      width: 30,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ],
                 ),
