@@ -6,6 +6,7 @@ import 'package:tic_tac_toe/screens/auth/auth_screen.dart';
 import 'package:tic_tac_toe/screens/home/home_screen.dart';
 import 'package:tic_tac_toe/screens/room_screen/room_screen.dart';
 import 'package:tic_tac_toe/screens/splash/splash_screen.dart';
+import 'package:tic_tac_toe/screens/update_profile/update_profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       // home: RoomScreen(),
       // home: SplashScreen(),
       // home: AuthScreen(),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: UpdateProfileScreen(),
     );
   }
 }
