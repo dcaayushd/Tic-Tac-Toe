@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBR9ens2DU-84iP-deqRwyLC8oke3ql1j8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>183933611012</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.dcaayush.codes.ticTacToe</string>
+	<key>PROJECT_ID</key>
+	<string>tic-tac-toe-3c4e7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tic-tac-toe-3c4e7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:183933611012:ios:ab71cb3776a35905d29951</string>
+</dict>
+</plist>
