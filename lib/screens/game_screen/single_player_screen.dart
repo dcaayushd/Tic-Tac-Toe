@@ -77,7 +77,10 @@ class SinglePlayerScreen extends StatelessWidget {
                                 IconsPath.wonIcon,
                               ),
                               SizedBox(width: 10),
-                              Text('WON : 12')
+                              Obx(
+                                () => Text(
+                                    'WON : ${singlePlayerController.xScore}'),
+                              ),
                             ],
                           ),
                         ),
@@ -115,7 +118,10 @@ class SinglePlayerScreen extends StatelessWidget {
                                 IconsPath.wonIcon,
                               ),
                               SizedBox(width: 10),
-                              Text('WON : 12')
+                              Obx(
+                                () => Text(
+                                    'WON : ${singlePlayerController.oScore}'),
+                              ),
                             ],
                           ),
                         ),

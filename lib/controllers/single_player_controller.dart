@@ -79,6 +79,7 @@ class SinglePlayerController extends GetxController {
   }
 
   Future<dynamic> WinnerDialog(String winner) {
+    scoreCalculate(winner);
     return Get.defaultDialog(
         barrierDismissible: false,
         title: winner == "no-one" ? "Match Draw" : "Congratulations",
@@ -168,5 +169,11 @@ class SinglePlayerController extends GetxController {
     Get.back();
   }
 
- 
+  void scoreCalculate(String winner) {
+    if (winner == "X") {
+      xScore.value = xScore.value + 1;
+    } else {
+      oScore.value = oScore.value + 1;
+    }
+  }
 }
