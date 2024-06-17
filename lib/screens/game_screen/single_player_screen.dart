@@ -2,7 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tic_tac_toe/controllers/SinglePlayerController.dart';
+import 'package:tic_tac_toe/controllers/single_player_controller.dart';
 import 'package:tic_tac_toe/widgets/in_game_user_card.dart';
 
 import '../../configs/assets_path.dart';
@@ -34,9 +34,7 @@ class SinglePlayerScreen extends StatelessWidget {
                 Row(
                   children: [
                     SvgPicture.asset(IconsPath.backIcon),
-                    SizedBox(
-                      width: 15.0,
-                    ),
+                    SizedBox(width: 15.0),
                     Text(
                       'Play Online',
                       style: Theme.of(context).textTheme.bodyMedium,
@@ -217,6 +215,50 @@ class SinglePlayerScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                SizedBox(height: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Obx(
+                      () => AnimatedContainer(
+                        duration: const Duration(milliseconds: 500),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 25,
+                        ),
+                        decoration: BoxDecoration(
+                          color: singlePlayerController.isXtime.value
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.secondary,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            singlePlayerController.isXtime.value
+                                ? SvgPicture.asset(
+                                    IconsPath.xIcon,
+                                    width: 30,
+                                  )
+                                : SvgPicture.asset(
+                                    IconsPath.oIcon,
+                                    width: 30,
+                                  ),
+                            SizedBox(width: 10.0),
+                            Text(
+                              'Turn',
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryContainer,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
