@@ -32,18 +32,5 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> updateProfile(String name, String imagePath) async {
-    var newUser = UserModel(
-      id: auth.currentUser!.uid,
-      name: name,
-      image: imagePath,
-      email: auth.currentUser!.email,
-      totalWins: '0',
-    );
-    await db.collection('users').doc(auth.currentUser!.uid).set(
-          newUser.toJson(),
-        );
-
-    Get.to(() => HomeScreen());
-  }
+  
 }

@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- Google Sign-in Section-->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.183933611012-6ps49tae1pbrbhdcgog6oci8cueuql6k</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Image Picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This is required to access your Photos</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>This is required to access your Camera</string>
+	
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This is required to access your Microphone for Voice Inputs</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tic_tac_toe/controllers/profile_controller.dart';
 import 'package:tic_tac_toe/widgets/primary_button_with_icon.dart';
 
 import '../../configs/assets_path.dart';
@@ -11,7 +15,9 @@ class UpdateProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
+    ProfileController profileController = Get.put(ProfileController());
+
+    RxString imagePath = ''.obs;
 
     return Scaffold(
       body: Padding(
@@ -26,19 +32,51 @@ class UpdateProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        width: 200,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                        ),
+                      Obx(
+                        () => imagePath == ''
+                            ? Container(
+                                width: 200,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                child: Icon(
+                                  Icons.add_a_photo_outlined,
+                                  size: 50,
+                                  color: Colors.grey,
+                                ),
+                              )
+                            : Container(
+                                width: 200,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  // color: Colors.red,
+                                  borderRadius: BorderRadius.circular(40),
+                                  // image: DecorationImage(
+                                  //   image: AssetImage(imagePath.value),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(40),
+                                  child: Image.file(
+                                    File(
+                                      imagePath.value,
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
                       ),
                       SizedBox(width: 20),
                       Column(
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              imagePath.value = await profileController
+                                  .pickImage(ImageSource.gallery);
+                            },
                             child: Container(
                               padding: EdgeInsets.all(15),
                               decoration: BoxDecoration(
@@ -53,7 +91,10 @@ class UpdateProfileScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 30),
                           InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              imagePath.value = await profileController
+                                  .pickImage(ImageSource.camera);
+                            },
                             child: Container(
                               padding: EdgeInsets.all(15),
                               decoration: BoxDecoration(
@@ -86,7 +127,8 @@ class UpdateProfileScreen extends StatelessWidget {
               PrimaryButtonWithIcon(
                 buttonText: 'Save',
                 onTap: () {
-                  authController.updateProfile();
+                  // !Error here
+                  // authController.updateProfile(),
                 },
                 iconPath: IconsPath.save,
               )
