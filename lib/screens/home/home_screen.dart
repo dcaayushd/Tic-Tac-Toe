@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/assets_path.dart';
+import 'package:tic_tac_toe/screens/game_screen/single_player_screen.dart';
 import 'package:tic_tac_toe/widgets/primary_button_with_icon.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -51,7 +53,9 @@ class HomeScreen extends StatelessWidget {
               children: [
                 PrimaryButtonWithIcon(
                   buttonText: 'Single Player',
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed('/singlePlayer');
+                  },
                   iconPath: IconsPath.user,
                 ),
                 SizedBox(height: 30),

@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tic Tac Toe',
       theme: lightTheme,
-      // home: SplashScreen(),
-      home: UpdateProfileScreen(),
+      home: SplashScreen(),
+      // home: UpdateProfileScreen(),
     );
   }
 }

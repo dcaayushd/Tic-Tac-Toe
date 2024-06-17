@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/screens/auth/auth_screen.dart';
 import 'package:tic_tac_toe/screens/game_screen/game_screen.dart';
+import 'package:tic_tac_toe/screens/game_screen/single_player_screen.dart';
 import 'package:tic_tac_toe/screens/home/home_screen.dart';
 import 'package:tic_tac_toe/screens/lobby_screen/lobby_screen.dart';
 import 'package:tic_tac_toe/screens/room_screen/room_screen.dart';
@@ -38,7 +39,11 @@ var pages = [
     page: () => WelcomeScreen(),
   ),
   GetPage(
-    name: "/game",
+    name: "/gameScreen",
     page: () => GameScreen(),
+  ),
+  GetPage(
+    name: "/singlePlayer",
+    page: () => SinglePlayerScreen(),
   ),
 ];
