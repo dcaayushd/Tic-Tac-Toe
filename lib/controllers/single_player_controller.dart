@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 
 import '../configs/assets_path.dart';
 
-
-
 class SinglePlayerController extends GetxController {
   RxList playValue = ["", "", "", "", "", "", "", "", ""].obs;
   RxBool isXtime = true.obs;
@@ -31,54 +29,54 @@ class SinglePlayerController extends GetxController {
         playValue[0] == playValue[2] &&
         playValue[0] != "") {
       print("winner is ${playValue[0]}");
-      WinnerDialog(playValue[0]);
+      winnerDialog(playValue[0]);
     } else if (playValue[3] == playValue[4] &&
         playValue[3] == playValue[5] &&
         playValue[3] != "") {
-      WinnerDialog(playValue[3]);
+      winnerDialog(playValue[3]);
       print("winner is ${playValue[3]}");
     } else if (playValue[6] == playValue[7] &&
         playValue[6] == playValue[8] &&
         playValue[6] != "") {
       print("winner is ${playValue[6]}");
-      WinnerDialog(playValue[6]);
+      winnerDialog(playValue[6]);
     }
     // Horizontal
     else if (playValue[0] == playValue[3] &&
         playValue[0] == playValue[6] &&
         playValue[0] != "") {
-      WinnerDialog(playValue[0]);
+      winnerDialog(playValue[0]);
       print("winner is ${playValue[0]}");
     } else if (playValue[1] == playValue[4] &&
         playValue[1] == playValue[7] &&
         playValue[1] != "") {
-      WinnerDialog(playValue[1]);
+      winnerDialog(playValue[1]);
       print("winner is ${playValue[1]}");
     } else if (playValue[2] == playValue[5] &&
         playValue[2] == playValue[8] &&
         playValue[2] != "") {
-      WinnerDialog(playValue[2]);
+      winnerDialog(playValue[2]);
       print("winner is ${playValue[2]}");
 
       // diagonal
     } else if (playValue[0] == playValue[4] &&
         playValue[0] == playValue[8] &&
         playValue[0] != "") {
-      WinnerDialog(playValue[0]);
+      winnerDialog(playValue[0]);
       print("winner is ${playValue[0]}");
     } else if (playValue[2] == playValue[4] &&
         playValue[2] == playValue[6] &&
         playValue[2] != "") {
       print("winner is ${playValue[2]}");
-      WinnerDialog(playValue[2]);
+      winnerDialog(playValue[2]);
     } else {
       if (!playValue.contains("")) {
-        WinnerDialog("noone");
+        winnerDialog("no-one");
       }
     }
   }
 
-  Future<dynamic> WinnerDialog(String winner) {
+  Future<dynamic> winnerDialog(String winner) {
     scoreCalculate(winner);
     return Get.defaultDialog(
         barrierDismissible: false,

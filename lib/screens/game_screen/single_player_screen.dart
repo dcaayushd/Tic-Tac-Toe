@@ -17,13 +17,6 @@ class SinglePlayerScreen extends StatelessWidget {
     SinglePlayerController singlePlayerController =
         Get.put(SinglePlayerController());
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: SvgPicture.asset(
-          IconsPath.msgIcon,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
       body: SafeArea(
         child: Padding(
           // padding: const EdgeInsets.all(20.0),
