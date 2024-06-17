@@ -15,24 +15,43 @@ class ProfileController extends GetxController {
   final store = FirebaseStorage.instance;
   final auth = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
- 
 
-    Future<void> updateProfile(String name, String imagePath) async {
-    var newUser = UserModel(
-      id: auth.currentUser!.uid,
-      name: name,
-      image: imagePath,
-      email: auth.currentUser!.email,
-      totalWins: '0',
-    );
-    await db.collection('users').doc(auth.currentUser!.uid).set(
-          newUser.toJson(),
-        );
+  RxBool isLoading = false.obs;
 
-    Get.to(() => HomeScreen());
+  Rx<UserModel> user = UserModel().obs;
+
+  @override
+  void onInit() {
+    super.onInit();
   }
 
+  Future<void> updateProfile(String name, String imagePath) async {
+    isLoading.value = true;
+    try {
+      if (imagePath != "" && name != "") {
+        var uploadedImageUrl = await uploadImageToFirebase(imagePath);
 
+        var newUser = UserModel(
+          id: auth.currentUser!.uid,
+          name: name,
+          image: uploadedImageUrl,
+          email: auth.currentUser!.email,
+          totalWins: "0",
+        );
+        await db.collection("users").doc(auth.currentUser!.uid).set(
+              newUser.toJson(),
+            );
+        successMessage("Profile Updated");
+        Get.offAll(() => HomeScreen());
+      } else {
+        errorMessage("Please fill all the fields");
+      }
+    } catch (e) {
+      print(e);
+      errorMessage("Profile Update Failed");
+    }
+    isLoading.value = false;
+  }
 
   Future<String> uploadImageToFirebase(String imagePath) async {
     final path = "files/$imagePath";

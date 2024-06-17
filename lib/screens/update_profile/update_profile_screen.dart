@@ -18,7 +18,7 @@ class UpdateProfileScreen extends StatelessWidget {
     ProfileController profileController = Get.put(ProfileController());
 
     RxString imagePath = ''.obs;
-
+    TextEditingController nameController = TextEditingController();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -113,6 +113,7 @@ class UpdateProfileScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 40),
                   TextFormField(
+                    controller: nameController,
                     decoration: InputDecoration(hintText: 'Enter your name'),
                   ),
                   SizedBox(height: 20),
@@ -124,14 +125,20 @@ class UpdateProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              PrimaryButtonWithIcon(
-                buttonText: 'Save',
-                onTap: () {
-                  // !Error here
-                  // authController.updateProfile(),
-                },
-                iconPath: IconsPath.save,
-              )
+              Obx(
+                () => profileController.isLoading.value
+                    ? CircularProgressIndicator()
+                    : PrimaryButtonWithIcon(
+                        buttonText: 'Save',
+                        onTap: () {
+                          profileController.updateProfile(
+                            nameController.text,
+                            imagePath.value,
+                          );
+                        },
+                        iconPath: IconsPath.save,
+                      ),
+              ),
             ],
           ),
         ),
