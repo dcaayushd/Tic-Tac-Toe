@@ -79,7 +79,6 @@ class SinglePlayerController extends GetxController {
   }
 
   Future<dynamic> WinnerDialog(String winner) {
-
     return Get.defaultDialog(
         barrierDismissible: false,
         title: winner == "no-one" ? "Match Draw" : "Congratulations",
@@ -107,7 +106,7 @@ class SinglePlayerController extends GetxController {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-
+                            resetGame();
                           },
                           child: Text("Play Again"),
                         ),
@@ -146,13 +145,13 @@ class SinglePlayerController extends GetxController {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-
+                            resetGame();
                           },
                           child: Text("Play Again"),
                         ),
                         ElevatedButton(
                           onPressed: () {
-
+                            Get.offAllNamed("/home");
                           },
                           child: Text("Exit"),
                         )
@@ -163,4 +162,11 @@ class SinglePlayerController extends GetxController {
         ));
   }
 
+  void resetGame() {
+    playValue.value = ["", "", "", "", "", "", "", "", ""].obs;
+    isXtime.value = !isXtime.value;
+    Get.back();
+  }
+
+ 
 }
