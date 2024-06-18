@@ -68,24 +68,24 @@ class RoomModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
-    _data["entryFee"] = entryFee;
-    _data["winningPrize"] = winningPrize;
-    _data["drawMatch"] = drawMatch;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = id;
+    data["entryFee"] = entryFee;
+    data["winningPrize"] = winningPrize;
+    data["drawMatch"] = drawMatch;
     if (player1 != null) {
-      _data["player1"] = player1?.toJson();
+      data["player1"] = player1?.toJson();
     }
     if (player2 != null) {
-      _data["player2"] = player2?.toJson();
+      data["player2"] = player2?.toJson();
     }
-    _data["gameStatus"] = gameStatus;
-    _data["player1Status"] = player1Status;
-    _data["player2Status"] = player2Status;
+    data["gameStatus"] = gameStatus;
+    data["player1Status"] = player1Status;
+    data["player2Status"] = player2Status;
     if (gameValue != null) {
-      _data["gameValue"] = gameValue;
+      data["gameValue"] = gameValue;
     }
-    _data["isXturn"] = isXturn;
-    return _data;
+    data["isXturn"] = isXturn;
+    return data;
   }
 }

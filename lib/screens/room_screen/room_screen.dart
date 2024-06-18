@@ -15,7 +15,7 @@ class RoomScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               Row(
@@ -63,14 +63,16 @@ class RoomScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Obx(()=> roomController.isLoading.value? CircularProgressIndicator():PrimaryButton(
-                buttonText: 'Join Now',
-                onTap: () {
-                  if (roomId.text.isNotEmpty) {
-                    roomController.joinRoom(roomId.text);
-                  }
-                },
-              )),
+              Obx(() => roomController.isLoading.value
+                  ? CircularProgressIndicator()
+                  : PrimaryButton(
+                      buttonText: 'Join Now',
+                      onTap: () {
+                        if (roomId.text.isNotEmpty) {
+                          roomController.joinRoom(roomId.text);
+                        }
+                      },
+                    )),
               SizedBox(
                 height: 80,
               ),

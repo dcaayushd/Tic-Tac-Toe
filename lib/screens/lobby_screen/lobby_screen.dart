@@ -13,7 +13,7 @@ import 'components/pricing_area.dart';
 import 'components/room_info.dart';
 
 class LobbyScreen extends StatelessWidget {
- final String roomId;
+  final String roomId;
   const LobbyScreen({
     super.key,
     required this.roomId,
@@ -29,7 +29,7 @@ class LobbyScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -50,7 +50,7 @@ class LobbyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 RoomInfo(roomCode: roomId),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 StreamBuilder(
                   stream: lobbyController.getRoomDetails(roomId),
                   builder: (context, snapshot) {
@@ -86,7 +86,7 @@ class LobbyScreen extends StatelessWidget {
                                 status: snapshot.data!.player1Status!,
                               ),
                               snapshot.data!.player2 == null
-                                  ? Container(
+                                  ? SizedBox(
                                       width: w / 2.6,
                                       child: Text("Waiting for Other"),
                                     )

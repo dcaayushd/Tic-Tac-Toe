@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:tic_tac_toe/controllers/lobby_controller.dart';
 
 import '../../../configs/assets_path.dart';
-import '../../../controllers/room_controller.dart';
 
 class RoomInfo extends StatelessWidget {
   final String roomCode;

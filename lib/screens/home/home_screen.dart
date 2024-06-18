@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/assets_path.dart';
-// import 'package:tic_tac_toe/controllers/profile_controller.dart';
+import 'package:tic_tac_toe/controllers/profile_controller.dart';
 
 import 'package:tic_tac_toe/widgets/primary_button_with_icon.dart';
 
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ProfileController profileController = Get.put(ProfileController());
+    ProfileController profileController = Get.put(ProfileController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),

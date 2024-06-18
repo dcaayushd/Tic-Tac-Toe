@@ -7,9 +7,8 @@ import 'package:get/get.dart';
 import '../configs/assets_path.dart';
 import '../models/room_model.dart';
 import '../models/user_model.dart';
-
 class MultiPlayerController extends GetxController {
-  ConfettiController confettiController =
+    ConfettiController confettiController =
       ConfettiController(duration: Duration(seconds: 2));
   final db = FirebaseFirestore.instance;
   Stream<RoomModel> getRoomDetails(String roomId) {
@@ -34,7 +33,7 @@ class MultiPlayerController extends GetxController {
       }
     } else if (!isXTurn) {
       if (oldValue[index] == '') {
-        oldValue[index] = "O ";
+        oldValue[index] = "O";
         print(oldValue);
         await db.collection("rooms").doc(roomId).update({
           "gameValue": oldValue,
@@ -52,62 +51,62 @@ class MultiPlayerController extends GetxController {
         playValue[0] == playValue[2] &&
         playValue[0] != "") {
       print("winner is ${playValue[0]}");
-      winnerDialog(playValue[0], roomData);
+      WinnerDialog(playValue[0], roomData);
     } else if (playValue[3] == playValue[4] &&
         playValue[3] == playValue[5] &&
         playValue[3] != "") {
-      winnerDialog(playValue[3], roomData);
+      WinnerDialog(playValue[3], roomData);
       print("winner is ${playValue[3]}");
     } else if (playValue[6] == playValue[7] &&
         playValue[6] == playValue[8] &&
         playValue[6] != "") {
       print("winner is ${playValue[6]}");
-      winnerDialog(playValue[6], roomData);
+      WinnerDialog(playValue[6], roomData);
     }
-    // Horizontal
+    // Horzontal
     else if (playValue[0] == playValue[3] &&
         playValue[0] == playValue[6] &&
         playValue[0] != "") {
-      winnerDialog(playValue[0], roomData);
+      WinnerDialog(playValue[0], roomData);
       print("winner is ${playValue[0]}");
     } else if (playValue[1] == playValue[4] &&
         playValue[1] == playValue[7] &&
         playValue[1] != "") {
-      winnerDialog(playValue[1], roomData);
+      WinnerDialog(playValue[1], roomData);
       print("winner is ${playValue[1]}");
     } else if (playValue[2] == playValue[5] &&
         playValue[2] == playValue[8] &&
         playValue[2] != "") {
-      winnerDialog(playValue[2], roomData);
+      WinnerDialog(playValue[2], roomData);
       print("winner is ${playValue[2]}");
-      // diagonals
+      // digobalss
     } else if (playValue[0] == playValue[4] &&
         playValue[0] == playValue[8] &&
         playValue[0] != "") {
-      winnerDialog(playValue[0], roomData);
+      WinnerDialog(playValue[0], roomData);
       print("winner is ${playValue[0]}");
     } else if (playValue[2] == playValue[4] &&
         playValue[2] == playValue[6] &&
         playValue[2] != "") {
       print("winner is ${playValue[2]}");
-      winnerDialog(playValue[2], roomData);
+      WinnerDialog(playValue[2], roomData);
     } else {
       if (!playValue.contains("")) {
-        winnerDialog("no-one", roomData);
+        WinnerDialog("noone", roomData);
       }
     }
   }
 
-  Future<dynamic> winnerDialog(String winner, RoomModel roomData) {
+  Future<dynamic> WinnerDialog(String winner, RoomModel roomData) {
     // scoreCalculate(winner);
-    confettiController.play();
+        confettiController.play();
     return Get.defaultDialog(
         barrierDismissible: false,
-        title: winner == "no-one" ? "Match Draw" : "Congratulations",
+        title: winner == "noone" ? "Match Draw" : "Congratulations",
         backgroundColor: Colors.white,
         content: Padding(
           padding: const EdgeInsets.all(10),
-          child: winner == "no-one"
+          child: winner == "noone"
               ? Column(
                   children: [
                     const Text(
