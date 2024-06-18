@@ -12,6 +12,7 @@ class RoomScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomController roomController = Get.put(RoomController());
+    TextEditingController roomId = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -48,6 +49,7 @@ class RoomScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: roomId,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: 'Enter Code Here',
@@ -62,12 +64,14 @@ class RoomScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              PrimaryButton(
+              Obx(()=> roomController.isLoading.value? CircularProgressIndicator():PrimaryButton(
                 buttonText: 'Join Now',
                 onTap: () {
-                  Get.toNamed('/lobby');
+                  if (roomId.text.isNotEmpty) {
+                    roomController.joinRoom(roomId.text);
+                  }
                 },
-              ),
+              )),
               SizedBox(
                 height: 80,
               ),

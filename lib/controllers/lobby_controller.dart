@@ -7,6 +7,7 @@ import '../models/room_model.dart';
 
 class LobbyController extends GetxController {
   final db = FirebaseFirestore.instance;
+
   void copyRoomCode(String roomCode) {
     FlutterClipboard.copy(roomCode).then(
       (value) => successMessage("Copied"),
@@ -20,5 +21,4 @@ class LobbyController extends GetxController {
           ),
         );
   }
-
 }
