@@ -170,8 +170,11 @@ class SinglePlayerController extends GetxController {
   void scoreCalculate(String winner) {
     if (winner == "X") {
       xScore.value = xScore.value + 1;
-    } else {
+    } else if (winner == "O") {
       oScore.value = oScore.value + 1;
+    } else {
+      xScore.value = xScore.value;
+      oScore.value = oScore.value;
     }
   }
 }
