@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-// import 'package:get/get.dart';
+import 'package:tic_tac_toe/controllers/lobby_controller.dart';
 
 import '../../../configs/assets_path.dart';
 import '../../../controllers/room_controller.dart';
@@ -12,7 +12,7 @@ class RoomInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RoomController roomController = Get.put(RoomController());
+    LobbyController lobbyController = Get.put(LobbyController());
     final w = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.all(20),
@@ -60,8 +60,7 @@ class RoomInfo extends StatelessWidget {
                     SizedBox(width: 10),
                     InkWell(
                       onTap: () {
-                        // lobbyController.copyRoomCode(roomCode);
-                        roomController.createRoom();
+                        lobbyController.copyRoomCode(roomCode);
                       },
                       child: Container(
                         padding: EdgeInsets.all(13),
