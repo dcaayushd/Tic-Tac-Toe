@@ -37,7 +37,7 @@ class RoomInfo extends StatelessWidget {
                         height: 70,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(

@@ -20,8 +20,8 @@ var lightTheme = ThemeData(
   colorScheme: const ColorScheme.light(
     primary: primaryColor,
     secondary: secondaryColor,
-    background: bgColor,
-    onBackground: fontColor,
+    surface: bgColor,
+    onSurface: fontColor,
     primaryContainer: containerColor,
     onPrimaryContainer: labelColor,
   ),

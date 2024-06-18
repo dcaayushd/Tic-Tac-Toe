@@ -20,10 +20,6 @@ class ProfileController extends GetxController {
 
   Rx<UserModel> user = UserModel().obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> updateProfile(String name, String imagePath) async {
     isLoading.value = true;
@@ -55,7 +51,7 @@ class ProfileController extends GetxController {
 
   Future<String> uploadImageToFirebase(String imagePath) async {
     final path = "files/$imagePath";
-    final file = File(imagePath!);
+    final file = File(imagePath);
     if (imagePath != "") {
       try {
         final ref = store.ref().child(path).putFile(file);

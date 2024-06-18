@@ -137,7 +137,7 @@ class SinglePlayerScreen extends StatelessWidget {
                     width: w,
                     height: w - 33,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Obx(
