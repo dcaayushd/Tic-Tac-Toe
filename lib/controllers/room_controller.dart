@@ -51,7 +51,7 @@ class RoomController extends GetxController {
       await db.collection("rooms").doc(id).set(
             newRoom.toJson(),
           );
-      Get.to(LobbyScreen(roomId: id));
+      Get.to(() => LobbyScreen(roomId: id));
       successMessage("Done");
     } catch (e) {
       print(e);
@@ -86,7 +86,7 @@ class RoomController extends GetxController {
           "player2Status": "waiting",
         },
       );
-      Get.to(LobbyScreen(roomId: roomId));
+      Get.to(() => LobbyScreen(roomId: roomId));
       successMessage("Done");
     } catch (e) {
       print(e);
