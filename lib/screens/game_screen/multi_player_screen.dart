@@ -49,7 +49,8 @@ class MultiPlayerScreen extends StatelessWidget {
               stream: multiPlayerController.getRoomDetails(roomId),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  RoomModel? roomData = snapshot.data!;
+                  RoomModel? roomData = snapshot.data;
+                  var playValue = roomData!.gameValue;
                   return Column(
                     children: [
                       Row(
@@ -172,7 +173,7 @@ class MultiPlayerScreen extends StatelessWidget {
                                 child: Container(
                                   margin: EdgeInsets.all(0.5),
                                   decoration: BoxDecoration(
-                                    color: playValue[index] == 'X'
+                                    color: playValue![index] == 'X'
                                         ? Theme.of(context).colorScheme.primary
                                         : playValue[index] == 'O'
                                             ? Theme.of(context)

@@ -77,7 +77,7 @@ class MultiPlayerController extends GetxController {
         playValue[2] != "") {
       winnerDialog(playValue[2], roomData);
       print("winner is ${playValue[2]}");
-      // digobalss
+      // diagonals
     } else if (playValue[0] == playValue[4] &&
         playValue[0] == playValue[8] &&
         playValue[0] != "") {
@@ -124,7 +124,7 @@ class MultiPlayerController extends GetxController {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-
+                            resetPlayValue(roomData);
                           },
                           child: Text("Play Again"),
                         ),
@@ -163,7 +163,7 @@ class MultiPlayerController extends GetxController {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-
+                            playAgain(winner, roomData);
                             Get.back();
                           },
                           child: Text("Play Again"),
@@ -181,5 +181,50 @@ class MultiPlayerController extends GetxController {
         ));
   }
 
-  
+  Future<void> playAgain(String wonTeam, RoomModel roomData) async {
+    if (wonTeam == "X") {
+      String totalWins = roomData.player1!.totalWins!;
+      int totalWin = int.parse(totalWins);
+      totalWin = totalWin + 1;
+      var newPlyer1 = UserModel(
+        id: roomData.player1!.id,
+        email: roomData.player1!.email,
+        image: roomData.player1!.image,
+        name: roomData.player1!.name,
+        role: roomData.player1!.role,
+        totalCoins: roomData.player1!.totalCoins,
+        totalWins: totalWin.toString(),
+        yourTurn: roomData.player1!.yourTurn,
+      );
+      await db.collection("rooms").doc(roomData.id).update({
+        "gameValue": ["", "", "", "", "", "", "", "", ""],
+        "player1": newPlyer1.toJson(),
+      });
+    } else if (wonTeam == "O") {
+      String totalWins = roomData.player2!.totalWins!;
+      int totalWin = int.parse(totalWins);
+      totalWin = totalWin + 1;
+      var newPlyer2 = UserModel(
+        id: roomData.player1!.id,
+        email: roomData.player1!.email,
+        image: roomData.player1!.image,
+        name: roomData.player1!.name,
+        role: roomData.player1!.role,
+        totalCoins: roomData.player1!.totalCoins,
+        totalWins: totalWin.toString(),
+        yourTurn: roomData.player1!.yourTurn,
+      );
+      await db.collection("rooms").doc(roomData.id).update({
+        "gameValue": ["", "", "", "", "", "", "", "", ""],
+        "player2": newPlyer2.toJson(),
+      });
+    }
+  }
+
+  Future<void> resetPlayValue(RoomModel roomData) async {
+    await db.collection("rooms").doc(roomData.id).update({
+      "gameValue": ["", "", "", "", "", "", "", "", ""],
+    });
+    Get.back();
+  }
 }
