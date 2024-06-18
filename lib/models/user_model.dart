@@ -4,13 +4,17 @@ class UserModel {
   String? email;
   String? image;
   String? totalWins;
+  String? role;
+ 
 
   UserModel({
+    this.role,
     this.id,
     this.name,
     this.email,
     this.image,
     this.totalWins,
+  
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -29,6 +33,10 @@ class UserModel {
     if (json["totalWins"] is String) {
       totalWins = json["totalWins"];
     }
+    if (json["role"] is String) {
+      role = json["role"];
+    }
+   
   }
 
   Map<String, dynamic> toJson() {
@@ -38,7 +46,8 @@ class UserModel {
     _data["email"] = email;
     _data["image"] = image;
     _data["totalWins"] = totalWins;
-
+    _data["role"] = role;
+   
     return _data;
   }
 }

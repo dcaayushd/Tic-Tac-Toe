@@ -22,7 +22,16 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() {
+    getUserDetails();
     super.onInit();
+  }
+
+  Future<void> getUserDetails() async {
+    await db.collection("users").doc(auth.currentUser!.uid).get().then(
+      (value) {
+        user.value = UserModel.fromJson(value.data()!);
+      },
+    );
   }
 
   Future<void> updateProfile(String name, String imagePath) async {

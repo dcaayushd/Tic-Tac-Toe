@@ -14,10 +14,10 @@ var screens = [
     name: '/room',
     page: () => RoomScreen(),
   ),
-  GetPage(
-    name: '/lobby',
-    page: () => LobbyScreen(),
-  ),
+  // GetPage(
+  //   name: '/lobby',
+  //   page: () => LobbyScreen(),
+  // ),
   GetPage(
     name: '/auth',
     page: () => AuthScreen(),

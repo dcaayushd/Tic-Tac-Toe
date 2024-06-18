@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/assets_path.dart';
+import 'package:tic_tac_toe/controllers/room_controller.dart';
 import 'package:tic_tac_toe/screens/lobby_screen/lobby_screen.dart';
 import 'package:tic_tac_toe/widgets/primary_button.dart';
 
@@ -10,6 +11,7 @@ class RoomScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RoomController roomController = Get.put(RoomController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -76,11 +78,16 @@ class RoomScreen extends StatelessWidget {
                     ),
               ),
               Spacer(),
-              PrimaryButton(
-                buttonText: 'Create Room',
-                onTap: () {
-                  Get.toNamed('/lobby');
-                },
+              Obx(
+                () => roomController.isLoading.value
+                    ? CircularProgressIndicator()
+                    : PrimaryButton(
+                        buttonText: 'Create Room',
+                        onTap: () {
+                          // Get.toNamed('/lobby');
+                          roomController.createRoom();
+                        },
+                      ),
               ),
             ],
           ),

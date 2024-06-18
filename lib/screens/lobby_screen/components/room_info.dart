@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 
 import '../../../configs/assets_path.dart';
+import '../../../controllers/room_controller.dart';
 
 class RoomInfo extends StatelessWidget {
   final String roomCode;
@@ -10,7 +12,7 @@ class RoomInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // LobbyController lobbyController = Get.put(LobbyController());
+    RoomController roomController = Get.put(RoomController());
     final w = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.all(20),
@@ -32,32 +34,34 @@ class RoomInfo extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                        child: Container(
-                      height: 70,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            roomCode,
-                            style: TextStyle(
-                              fontSize: w / 11,
-                              letterSpacing: 2.4,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w600,
+                      child: Container(
+                        height: 70,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.background,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              roomCode,
+                              style: TextStyle(
+                                fontSize: w / 11,
+                                letterSpacing: 2.4,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    )),
+                    ),
                     SizedBox(width: 10),
                     InkWell(
                       onTap: () {
                         // lobbyController.copyRoomCode(roomCode);
+                        roomController.createRoom();
                       },
                       child: Container(
                         padding: EdgeInsets.all(13),

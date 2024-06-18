@@ -12,7 +12,11 @@ import 'components/pricing_area.dart';
 import 'components/room_info.dart';
 
 class LobbyScreen extends StatelessWidget {
-  const LobbyScreen({super.key});
+  final String roomId;
+  const LobbyScreen({
+    super.key,
+    required this.roomId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class LobbyScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20),
-                RoomInfo(roomCode: '123456'),
+                RoomInfo(roomCode: roomId),
                 // SizedBox(height: 40),
                 SizedBox(height: 20),
                 PriceArea(entryPrice: '23', winningPrice: '46'),
