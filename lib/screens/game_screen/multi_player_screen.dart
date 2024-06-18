@@ -1,12 +1,13 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:tic_tac_toe/widgets/in_game_user_card.dart';
 
 import '../../configs/assets_path.dart';
 
-class GameScreen extends StatelessWidget {
-  const GameScreen({super.key});
+class MultiPlayerScreen extends StatelessWidget {
+  const MultiPlayerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +41,17 @@ class GameScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(IconsPath.backIcon),
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(IconsPath.backIcon),
+                    ),
                     SizedBox(
                       width: 15.0,
                     ),
                     Text(
-                      'Play Online',
+                      'Back',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],

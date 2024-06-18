@@ -18,7 +18,12 @@ class RoomScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(IconsPath.backIcon),
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: SvgPicture.asset(IconsPath.backIcon),
+                  ),
                   SizedBox(
                     width: 15.0,
                   ),
@@ -57,7 +62,9 @@ class RoomScreen extends StatelessWidget {
               ),
               PrimaryButton(
                 buttonText: 'Join Now',
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed('/lobby');
+                },
               ),
               SizedBox(
                 height: 80,
@@ -72,7 +79,7 @@ class RoomScreen extends StatelessWidget {
               PrimaryButton(
                 buttonText: 'Create Room',
                 onTap: () {
-                  Get.to(() => LobbyScreen());
+                  Get.toNamed('/lobby');
                 },
               ),
             ],

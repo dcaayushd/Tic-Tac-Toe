@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tic_tac_toe/screens/game_screen/game_screen.dart';
+import 'package:tic_tac_toe/screens/game_screen/multi_player_screen.dart';
 // import 'package:get/get.dart';
 
 import '../../configs/assets_path.dart';
@@ -27,7 +27,12 @@ class LobbyScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(IconsPath.backIcon),
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(IconsPath.backIcon),
+                    ),
                     SizedBox(
                       width: 15.0,
                     ),
@@ -39,11 +44,11 @@ class LobbyScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 RoomInfo(roomCode: '123456'),
-                SizedBox(
-                  height: 40,
-                ),
+                // SizedBox(height: 40),
+                SizedBox(height: 20),
                 PriceArea(entryPrice: '23', winningPrice: '46'),
-                SizedBox(height: 90),
+                // SizedBox(height: 90),
+                SizedBox(height: 80),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -56,7 +61,7 @@ class LobbyScreen extends StatelessWidget {
                   buttonText: 'Start Game',
                   onTap: () {
                     Get.to(
-                      () => GameScreen(),
+                      () => MultiPlayerScreen(),
                     );
                   },
                 ),

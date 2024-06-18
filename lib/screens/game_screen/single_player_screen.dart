@@ -26,7 +26,12 @@ class SinglePlayerScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(IconsPath.backIcon),
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(IconsPath.backIcon),
+                    ),
                     SizedBox(width: 15.0),
                     Text(
                       'Play Online',

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       builder: FToastBuilder(),
-      getPages: pages,
+      getPages: screens,
       debugShowCheckedModeBanner: false,
       title: 'Tic Tac Toe',
       theme: lightTheme,
