@@ -35,10 +35,10 @@ var screens = [
     name: "/welcome",
     page: () => WelcomeScreen(),
   ),
-  GetPage(
-    name: "/multiPlayer",
-    page: () => MultiPlayerScreen(),
-  ),
+  // GetPage(
+  //   name: "/multiPlayer",
+  //   page: () => MultiPlayerScreen(),
+  // ),
   GetPage(
     name: "/singlePlayer",
     page: () => SinglePlayerScreen(),

@@ -67,10 +67,11 @@ class LobbyScreen extends StatelessWidget {
                       if (snapshot.data!.player1 == 'ready' &&
                           snapshot.data!.player2 == 'ready') {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
-                          Get.to(() => MultiPlayerScreen());
+                          Get.to(
+                            () => MultiPlayerScreen(roomId: roomId),
+                          );
                         });
                       } else {
-                        // errorMessage('Wait For Other');
                       }
 
                       return Column(
@@ -85,7 +86,7 @@ class LobbyScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               UserCard(
-                                imageUrl: snapshot.data!.player1!.image!,
+                                imageUrl: snapshot.data!.player1!.image ?? defaultImage,
                                 name: snapshot.data!.player1!.name!,
                                 coins: '00',
                                 // coins: snapshot.data!.player1!.coins!,

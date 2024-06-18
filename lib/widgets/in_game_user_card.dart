@@ -5,10 +5,13 @@ import 'package:flutter_svg/svg.dart';
 
 class InGameUserCard extends StatefulWidget {
   final String playIcon;
-
+  final String name;
+  final String imageUrl;
   const InGameUserCard({
     super.key,
     required this.playIcon,
+    required this.name,
+    required this.imageUrl,
   });
 
   @override
@@ -34,7 +37,7 @@ class _InGameUserCardState extends State<InGameUserCard> {
             children: [
               SizedBox(height: 60),
               Text(
-                'Aayush Dc',
+                widget.name,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: 10),
@@ -67,11 +70,14 @@ class _InGameUserCardState extends State<InGameUserCard> {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(100),
               border: Border.all(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 width: 3,
+              ),
+              image: DecorationImage(
+                image: NetworkImage(widget.imageUrl),
+                fit: BoxFit.cover,
               ),
             ),
           ),
