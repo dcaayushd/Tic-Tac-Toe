@@ -24,7 +24,6 @@ class RoomController extends GetxController {
     super.onInit();
   }
 
-
   Future<void> createRoom() async {
     isLoading.value = true;
     String id = uuid.v4().substring(0, 8).toUpperCase();
@@ -43,7 +42,8 @@ class RoomController extends GetxController {
       winningPrize: "100",
       drawMatch: "",
       player1: player1,
-  
+      gameStatus: "lobby",
+      player1Status: 'waiting',
     );
     try {
       await db.collection("rooms").doc(id).set(
@@ -58,7 +58,7 @@ class RoomController extends GetxController {
     isLoading.value = false;
   }
 
-   Future<void> getUserDetails() async {
+  Future<void> getUserDetails() async {
     await db.collection("users").doc(auth.currentUser!.uid).get().then(
       (value) {
         user.value = UserModel.fromJson(value.data()!);
@@ -92,5 +92,4 @@ class RoomController extends GetxController {
     }
     isLoading.value = false;
   }
-
 }

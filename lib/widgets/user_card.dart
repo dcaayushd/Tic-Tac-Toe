@@ -7,11 +7,13 @@ class UserCard extends StatefulWidget {
   final String imageUrl;
   final String name;
   final String coins;
+  final String status;
   const UserCard({
     super.key,
     required this.imageUrl,
     required this.name,
     required this.coins,
+    this.status = '',
   });
 
   @override
@@ -55,6 +57,33 @@ class _UserCardState extends State<UserCard> {
                   ),
                 ],
               ),
+              widget.status == ''
+                  ? SizedBox()
+                  : widget.status == 'ready'
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              size: 20,
+                              color: Colors.green,
+                            ),
+                            SizedBox(width: 10),
+                            Text(widget.status),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.watch_later_outlined,
+                              size: 20,
+                              color: Colors.orange,
+                            ),
+                            SizedBox(width: 10),
+                            Text(widget.status),
+                          ],
+                        ),
             ],
           ),
         ),
