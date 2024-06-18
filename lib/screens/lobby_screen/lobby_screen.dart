@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:tic_tac_toe/controllers/lobby_controller.dart';
 import 'package:tic_tac_toe/screens/game_screen/multi_player_screen.dart';
-// import 'package:get/get.dart';
 
 import '../../configs/assets_path.dart';
 import '../../widgets/primary_button.dart';
@@ -22,6 +22,7 @@ class LobbyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
+    LobbyController lobbyController = Get.put(LobbyController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -50,23 +51,56 @@ class LobbyScreen extends StatelessWidget {
                 RoomInfo(roomCode: roomId),
                 // SizedBox(height: 40),
                 SizedBox(height: 20),
-                PriceArea(entryPrice: '23', winningPrice: '46'),
-                // SizedBox(height: 90),
-                SizedBox(height: 80),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    UserCard(),
-                    UserCard(),
-                  ],
-                ),
-                SizedBox(height: 20),
-                PrimaryButton(
-                  buttonText: 'Start Game',
-                  onTap: () {
-                    Get.to(
-                      () => MultiPlayerScreen(),
-                    );
+                StreamBuilder(
+                  stream: lobbyController.getRoomDetails(roomId),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return Column(
+                        children: [
+                          PriceArea(
+                            entryPrice: snapshot.data!.entryFee!,
+                            winningPrice: snapshot.data!.winningPrize!,
+                          ),
+                          // SizedBox(height: 90),
+                          SizedBox(height: 80),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              UserCard(
+                                imageUrl: snapshot.data!.player1!.image!,
+                                name: snapshot.data!.player1!.name!,
+                                coins: '00',
+                                // coins: snapshot.data!.player1!.coins!,
+                              ),
+                              snapshot.data!.player2 == null
+                                  ? Container(
+                                      width: w / 2.6,
+                                      child: Text('Waiting for other Player'),
+                                    )
+                                  : UserCard(
+                                      imageUrl: snapshot.data!.player2!.image!,
+                                      name: snapshot.data!.player2!.name!,
+                                      coins: '00',
+                                      // coins: snapshot.data!.player2!.coins!,
+                                    ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          PrimaryButton(
+                            buttonText: 'Start Game',
+                            onTap: () {
+                              Get.to(
+                                () => MultiPlayerScreen(),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    }
                   },
                 ),
               ],

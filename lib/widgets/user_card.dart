@@ -4,7 +4,15 @@ import 'package:flutter_svg/svg.dart';
 import '../configs/assets_path.dart';
 
 class UserCard extends StatefulWidget {
-  const UserCard({super.key});
+  final String imageUrl;
+  final String name;
+  final String coins;
+  const UserCard({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+    required this.coins,
+  });
 
   @override
   State<UserCard> createState() => _UserCardState();
@@ -29,7 +37,7 @@ class _UserCardState extends State<UserCard> {
             children: [
               SizedBox(height: 60),
               Text(
-                'Aayush Dc',
+                widget.name,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: 10),
@@ -42,7 +50,7 @@ class _UserCardState extends State<UserCard> {
                   ),
                   SizedBox(width: 10),
                   Text(
-                    '23 Coins',
+                    '${widget.coins} Coins',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
@@ -57,12 +65,20 @@ class _UserCardState extends State<UserCard> {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
-                borderRadius: BorderRadius.circular(100),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  width: 3,
-                )),
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(100),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                width: 3,
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(
+                widget.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
       ],

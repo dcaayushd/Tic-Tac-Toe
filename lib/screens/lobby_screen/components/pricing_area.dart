@@ -115,9 +115,7 @@ class PriceArea extends StatelessWidget {
                 children: [
                   SvgPicture.asset(IconsPath.coinIcon),
                   SizedBox(width: 10),
-                  Text(
-                    winningPrice.toString(),
-                  ),
+                  Text(winningPrice.toString()),
                 ],
               ),
             ),
