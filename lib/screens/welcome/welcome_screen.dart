@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/configs/assets_path.dart';
 import 'package:tic_tac_toe/screens/auth/auth_screen.dart';
-import 'package:tic_tac_toe/screens/room_screen/room_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

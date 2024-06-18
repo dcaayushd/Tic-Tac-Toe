@@ -8,7 +8,6 @@ import 'package:tic_tac_toe/controllers/profile_controller.dart';
 import 'package:tic_tac_toe/widgets/primary_button_with_icon.dart';
 
 import '../../configs/assets_path.dart';
-import '../../controllers/auth_controller.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
   const UpdateProfileScreen({super.key});

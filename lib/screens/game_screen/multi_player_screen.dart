@@ -20,19 +20,19 @@ class MultiPlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var playValue = [
-      'X',
-      'O',
-      '',
-      '',
-      'O',
-      '',
-      '',
-      'X',
-      'O',
-    ];
+    // var playValue = [
+    //   'X',
+    //   'O',
+    //   '',
+    //   '',
+    //   'O',
+    //   '',
+    //   '',
+    //   'X',
+    //   'O',
+    // ];
     final w = MediaQuery.of(context).size.width;
-    final h = MediaQuery.of(context).size.height;
+    // final h = MediaQuery.of(context).size.height;
     MultiPlayerController multiPlayerController =
         Get.put(MultiPlayerController());
    

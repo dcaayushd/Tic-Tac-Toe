@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/controllers/single_player_controller.dart';
-import 'package:tic_tac_toe/widgets/in_game_user_card.dart';
 
 import '../../configs/assets_path.dart';
 
@@ -13,7 +12,7 @@ class SinglePlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
-    final h = MediaQuery.of(context).size.height;
+    // final h = MediaQuery.of(context).size.height;
     SinglePlayerController singlePlayerController =
         Get.put(SinglePlayerController());
     return Scaffold(

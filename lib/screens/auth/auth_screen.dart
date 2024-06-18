@@ -10,7 +10,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RxBool isLoading = false.obs;
+    // RxBool isLoading = false.obs;
     AuthController authController = Get.put(AuthController());
     return Scaffold(
       body: Padding(
