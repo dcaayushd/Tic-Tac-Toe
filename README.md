@@ -33,7 +33,7 @@ The Tic Tac Toe application relies on the following dependencies:
 
 ## Screenshots
 
-![App Screenshot](assets/images/app_ss.jpg)
+<img src="assets/images/app_ss.png" alt="App Screenshot" width="300" />
 
 ## Installation
 
