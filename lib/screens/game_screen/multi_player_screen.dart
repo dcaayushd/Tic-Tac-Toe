@@ -10,6 +10,7 @@ import 'package:tic_tac_toe/models/room_model.dart';
 import 'package:tic_tac_toe/widgets/in_game_user_card.dart';
 
 import '../../configs/assets_path.dart';
+import '../../controllers/auth_controller.dart';
 
 class MultiPlayerScreen extends StatelessWidget {
   final String roomId;
@@ -20,22 +21,11 @@ class MultiPlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var playValue = [
-    //   'X',
-    //   'O',
-    //   '',
-    //   '',
-    //   'O',
-    //   '',
-    //   '',
-    //   'X',
-    //   'O',
-    // ];
     final w = MediaQuery.of(context).size.width;
-    // final h = MediaQuery.of(context).size.height;
+    final h = MediaQuery.of(context).size.height;
     MultiPlayerController multiPlayerController =
         Get.put(MultiPlayerController());
-   
+    AuthController authController = Get.put(AuthController());
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -49,7 +39,6 @@ class MultiPlayerScreen extends StatelessWidget {
           ),
           body: SafeArea(
             child: Padding(
-              // padding: const EdgeInsets.all(20.0),
               padding: const EdgeInsets.all(10.0),
               child: SingleChildScrollView(
                 child: StreamBuilder(
@@ -244,47 +233,41 @@ class MultiPlayerScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
+                              AnimatedContainer(
                                 padding: EdgeInsets.symmetric(
-                                  horizontal: 20,
+                                  horizontal: 25,
                                   vertical: 10,
                                 ),
+                                duration: const Duration(milliseconds: 500),
                                 decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.primary,
-                                  borderRadius: BorderRadius.circular(5),
+                                  color: roomData.isXturn == true
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Theme.of(context).colorScheme.secondary,
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: roomData.isXturn == true
-                                    ? Row(
-                                        children: [
-                                          SvgPicture.asset(
+                                child: Row(
+                                  children: [
+                                    roomData.isXturn == true
+                                        ? SvgPicture.asset(
                                             IconsPath.xIcon,
-                                            width: 20,
-                                          ),
-                                          SizedBox(width: 10),
-                                          Text(
-                                            'Turn',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    : Row(
-                                        children: [
-                                          SvgPicture.asset(
+                                            width: 30,
+                                          )
+                                        : SvgPicture.asset(
                                             IconsPath.oIcon,
-                                            width: 20,
+                                            width: 30,
                                           ),
-                                          SizedBox(width: 10),
-                                          Text(
-                                            'Turn',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
+                                    SizedBox(width: 10.0),
+                                    Text(
+                                      'Turn',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primaryContainer,
                                       ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
