@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import '../configs/Messages.dart';
 
 class AuthController extends GetxController {
   final auth = FirebaseAuth.instance;
-  // final db = FirebaseFirestore.instance;
+  final db = FirebaseFirestore.instance;
   Future<void> login() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

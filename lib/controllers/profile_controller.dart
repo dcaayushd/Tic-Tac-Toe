@@ -10,16 +10,20 @@ import 'package:tic_tac_toe/screens/home/home_screen.dart';
 import '../configs/messages.dart';
 import '../models/user_model.dart';
 
+
 class ProfileController extends GetxController {
   final ImagePicker picker = ImagePicker();
   final store = FirebaseStorage.instance;
   final auth = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
-
   RxBool isLoading = false.obs;
 
+  Rx<UserModel> user = UserModel().obs;
 
- 
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   Future<void> updateProfile(String name, String imagePath) async {
     isLoading.value = true;
@@ -38,7 +42,7 @@ class ProfileController extends GetxController {
               newUser.toJson(),
             );
         successMessage("Profile Updated");
-        Get.offAll(() => HomeScreen());
+        Get.offAll(HomeScreen());
       } else {
         errorMessage("Please fill all the fields");
       }
@@ -51,7 +55,7 @@ class ProfileController extends GetxController {
 
   Future<String> uploadImageToFirebase(String imagePath) async {
     final path = "files/$imagePath";
-    final file = File(imagePath);
+    final file = File(imagePath!);
     if (imagePath != "") {
       try {
         final ref = store.ref().child(path).putFile(file);
@@ -76,3 +80,4 @@ class ProfileController extends GetxController {
     }
   }
 }
+

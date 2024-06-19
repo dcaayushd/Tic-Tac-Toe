@@ -34,6 +34,7 @@ class RoomController extends GetxController {
       image: user.value.image,
       email: user.value.email,
       totalWins: "0",
+      yourTurn: "X",
       role: "admin",
     );
     var newRoom = RoomModel(
@@ -76,7 +77,7 @@ class RoomController extends GetxController {
       image: user.value.image,
       email: user.value.email,
       totalWins: "0",
-      // yourTurn: "O",
+      yourTurn: "O",
       role: "player",
     );
     try {

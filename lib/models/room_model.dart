@@ -1,4 +1,3 @@
-
 import 'package:tic_tac_toe/models/user_model.dart';
 
 class RoomModel {

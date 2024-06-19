@@ -116,7 +116,7 @@ class SinglePlayerController extends GetxController {
                           child: Text("Exit"),
                         )
                       ],
-                    )
+                    ),
                   ],
                 )
               : Column(
@@ -155,10 +155,10 @@ class SinglePlayerController extends GetxController {
                           child: Text("Exit"),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
-        ));
+        ),);
   }
 
   void resetGame() {

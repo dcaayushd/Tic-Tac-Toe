@@ -7,8 +7,9 @@ import 'package:get/get.dart';
 import '../configs/assets_path.dart';
 import '../models/room_model.dart';
 import '../models/user_model.dart';
+
 class MultiPlayerController extends GetxController {
-    ConfettiController confettiController =
+  ConfettiController confettiController =
       ConfettiController(duration: Duration(seconds: 2));
   final db = FirebaseFirestore.instance;
   Stream<RoomModel> getRoomDetails(String roomId) {
@@ -92,96 +93,97 @@ class MultiPlayerController extends GetxController {
       WinnerDialog(playValue[2], roomData);
     } else {
       if (!playValue.contains("")) {
-        WinnerDialog("noone", roomData);
+        WinnerDialog("no-one", roomData);
       }
     }
   }
 
   Future<dynamic> WinnerDialog(String winner, RoomModel roomData) {
     // scoreCalculate(winner);
-        confettiController.play();
+    confettiController.play();
     return Get.defaultDialog(
-        barrierDismissible: false,
-        title: winner == "noone" ? "Match Draw" : "Congratulations",
-        backgroundColor: Colors.white,
-        content: Padding(
-          padding: const EdgeInsets.all(10),
-          child: winner == "noone"
-              ? Column(
-                  children: [
-                    const Text(
-                      "Match Draw",
-                      style: TextStyle(
-                        fontSize: 18,
+      barrierDismissible: false,
+      title: winner == "no-one" ? "Match Draw" : "Congratulations",
+      backgroundColor: Colors.white,
+      content: Padding(
+        padding: const EdgeInsets.all(10),
+        child: winner == "no-one"
+            ? Column(
+                children: [
+                  const Text(
+                    "Match Draw",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  const Text(
+                    "You both played well",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          resetPlayValue(roomData);
+                        },
+                        child: Text("Play Again"),
                       ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Get.offAllNamed("/home");
+                        },
+                        child: Text("Exit"),
+                      )
+                    ],
+                  )
+                ],
+              )
+            : Column(
+                children: [
+                  SvgPicture.asset(
+                    IconsPath.wonIcon,
+                    width: 100,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Congratulations",
+                    style: TextStyle(
+                      fontSize: 18,
                     ),
-                    const Text(
-                      "You both played well",
-                      style: TextStyle(
-                        fontSize: 12,
+                  ),
+                  Text(
+                    "$winner won the match",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          playAgain(winner, roomData);
+                          Get.back();
+                        },
+                        child: Text("Play Again"),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            resetPlayValue(roomData);
-                          },
-                          child: Text("Play Again"),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Get.offAllNamed("/home");
-                          },
-                          child: Text("Exit"),
-                        )
-                      ],
-                    )
-                  ],
-                )
-              : Column(
-                  children: [
-                    SvgPicture.asset(
-                      IconsPath.wonIcon,
-                      width: 100,
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Congratulations",
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      "$winner won the match",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            playAgain(winner, roomData);
-                            Get.back();
-                          },
-                          child: Text("Play Again"),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Get.offAllNamed("/home");
-                          },
-                          child: Text("Exit"),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-        ));
+                      ElevatedButton(
+                        onPressed: () {
+                          Get.offAllNamed("/home");
+                        },
+                        child: Text("Exit"),
+                      )
+                    ],
+                  )
+                ],
+              ),
+      ),
+    );
   }
 
   Future<void> playAgain(String wonTeam, RoomModel roomData) async {
