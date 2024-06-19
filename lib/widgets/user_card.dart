@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../configs/assets_path.dart';
 
-class UserCard extends StatefulWidget {
+class UserCard extends StatelessWidget {
   final String imageUrl;
   final String name;
   final String coins;
@@ -17,14 +18,8 @@ class UserCard extends StatefulWidget {
   });
 
   @override
-  State<UserCard> createState() => _UserCardState();
-}
-
-class _UserCardState extends State<UserCard> {
-  @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
-
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -39,7 +34,7 @@ class _UserCardState extends State<UserCard> {
             children: [
               SizedBox(height: 60),
               Text(
-                widget.name,
+                name,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: 10),
@@ -52,14 +47,14 @@ class _UserCardState extends State<UserCard> {
                   ),
                   SizedBox(width: 10),
                   Text(
-                    '${widget.coins} Coins',
+                    '$coins Coins',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
-              widget.status == ''
+              status == ''
                   ? SizedBox()
-                  : widget.status == 'ready'
+                  : status == 'ready'
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -69,7 +64,7 @@ class _UserCardState extends State<UserCard> {
                               color: Colors.green,
                             ),
                             SizedBox(width: 10),
-                            Text(widget.status),
+                            Text(status),
                           ],
                         )
                       : Row(
@@ -81,7 +76,7 @@ class _UserCardState extends State<UserCard> {
                               color: Colors.orange,
                             ),
                             SizedBox(width: 10),
-                            Text(widget.status),
+                            Text(status),
                           ],
                         ),
             ],
@@ -103,9 +98,11 @@ class _UserCardState extends State<UserCard> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child: Image.network(
-                widget.imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
                 fit: BoxFit.cover,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
           ),
